@@ -18,7 +18,7 @@ This writeup covers the full path I took, including a couple of dead ends I inve
 
 ### Port scan
 
-I started by inspecting the machine with nmap, scanning all 65,000 ports to identify any hidden services on uncommon ports.
+I started by inspecting the machine with nmap, scanning all ports to identify any hidden services on uncommon ports.
 
 ```bash
 nmap -sV -sC -sS -p- -T5 -oN port_scan.txt <target>
