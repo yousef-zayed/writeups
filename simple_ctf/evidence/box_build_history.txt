@@ -1,0 +1,165 @@
+# NOTE: This is NOT part of the attack chain.
+# This is the room author's own .bash_history, found while enumerating
+# the sunbath user's home directory post-root. It documents how the box
+# itself was built (installing apache/mysql/vsftpd, creating the CMS
+# install, setting the sudo-vim privesc, etc). Kept here as supporting
+# context, not as an exploitation step.
+# ---------------------------------------------------------------------
+
+root@Machine:/# cat /home/sunbath/.bash_history 
+su mitch
+clear
+apt-get update && apt-get upgrade -y
+apt-get install apache2
+apt-get install mysql
+apt-get install mysql-server
+apt-get install vsftpd
+clear
+ifconfig
+clear
+pwd
+cd Downloads/
+ls
+mv openemr-5_0_1_3/ /var/www/html
+apt-get install php
+add-apt-repository ppa:ondrej/php
+apt update
+apt install php7.2 libapache2-mod-php7.2 php7.2-common php7.2-sqlite php7.2-curl php7.2-intl php7.2-mbstring php7.2-xmlrpc php7.2-mysql php7.2-gd php7.2-xml php7.2-cli php7.2-zip
+nano /etc/php/7.2/apache2/php.ini
+echo "vsftpd test file" | sudo tee /var/ftp/pub/test.txt
+rm -rf /var/ftp/pub/test.txt
+echo "Dammit man... you'te the worst dev i've seen. You set the same pass for the system user, and the password is so weak... i cracked it in seconds. Gosh... what a mess!" | sudo tee /var/ftp/pub/ForMitch.txt
+clear
+nano /etc/vsftpd.conf
+systemctl restart vsftpd
+systemctl start vsftpd
+systemctl enable vsftpd
+systemctl restart mysql
+systemctl enable mysql
+systemctl enable apache2
+clear
+cd /home
+useradd -m -d /home/mitch mitch
+chmod 750 *
+ls
+passwd mitch
+cd /var/www/html
+ls -la
+touch hint.txt
+echo Switch the user... > hint.txt
+ls -la
+cat hint.txt 
+clear
+chmod 755 hint.txt 
+chown www-data www-data hint.txt
+chown www-data.www-data hint.txt
+ls
+ls -la
+clear
+cd /root
+touch root.txt
+echo W3ll d0n3. You made it! > root.txt 
+ls -la
+rm -rf .nano
+rm -rf .cache
+clear
+chown root.root /usr/bin/vom
+chown root.root /usr/bin/vim
+visudo
+clear
+sudo -s
+sudo -s
+clear
+cd /var/www/html
+ls -la
+locate robots.txt
+cp /usr/share/cups/doc-root/robots.txt /var/www/html
+ls
+nano robots.txt 
+clear
+ls
+chown -R www-data.www-data *
+chmod -R 755 *
+ls -la
+clear
+mysql -u root -p
+clear
+service apache2 restart
+mkdir -p /var/ftp/pub
+visudo
+chmod g+s /usr/bin/vim
+apt-get install vim
+chmod g+s /usr/bin/vim
+reboot
+apt-get remove wget
+sudo -s
+apt-get remove wget
+reboot
+shutdown
+shutdown 0
+cd /var/www/html
+ls -la
+rm -rf hint.txt
+sudo -s
+rm -rf hint.txt 
+rm -rf openemr-5_0_1_3/
+mysql
+Step 5: Download and Install BigTree CMS
+Run the commands below to download BigTree CMS content…
+cd /tmp && wget https://www.bigtreecms.org/files/installers/bigtree-4.2.22.zip
+unzip bigtree-4.2.22.zip
+sudo mv BigTree-CMS /var/www/html/bigtree
+Next, run the commands below to change the root folder permissions…
+sudo chown -R www-data:www-data /var/www/html/bigtree/
+sudo chmod -R 755 /var/www/html/bigtree/
+Step 6: Configure Apache2 BigTree CMS Site
+Finally, configure Apache2 configuration file for BigTree CMS. This file will control how users access BigTree CMS content. Run the commands below to create a new configuration file called bigtree.conf
+mysql- u
+mysql -u
+mysql
+cclear
+cd /home/sunbath/Downloads/
+ls
+mv cmsms-2.2.8-install.php /var/www/html/simple/install.php
+sudo -s
+apt-get install firefox
+ls
+mkdir simple
+chown -R www-data.www-data *
+chmod -R 7555
+chmod -R 755 *
+clear
+ifconfig
+nano /etc/apache2/ports.conf 
+apt-get install openssh-server
+apt-get install openssh-client
+apt autoremove
+apt upgrade
+apt-get install ufw
+apt autoremove
+ls
+ls -la
+clear
+nano /etc/ssh/sshd_config
+clear
+ufw allow 21
+ufw allow 2222
+ufw allow 80
+systemctl enable ssh
+systemctl enable ssh.service
+ifconfig
+rm -rf /var/log/*.log
+sudo -l
+ls
+cd ~
+ls
+ls -la
+cd .config
+ls
+cat user-dirs.dirs
+cd ..
+ls
+cd mitch
+cd ..
+su root
+exit

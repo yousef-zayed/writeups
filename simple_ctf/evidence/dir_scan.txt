@@ -1,0 +1,44 @@
+===============================================================
+Gobuster v3.6
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.112.191.243
+[+] Method:                  GET
+[+] Threads:                 100
+[+] Wordlist:                /home/yousefmzayed/hdd/wordlists/SecLists/Discovery/Web-Content/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.6
+[+] Extensions:              php,html,txt,bak,js
+[+] Follow Redirect:         true
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+[2K/.hta.php             (Status: 403) [Size: 297]
+[2K/.hta                 (Status: 403) [Size: 293]
+[2K/.hta.js              (Status: 403) [Size: 296]
+[2K/.hta.html            (Status: 403) [Size: 298]
+[2K/.hta.bak             (Status: 403) [Size: 297]
+[2K/.htaccess.txt        (Status: 403) [Size: 302]
+[2K/.hta.txt             (Status: 403) [Size: 297]
+[2K/.htaccess.html       (Status: 403) [Size: 303]
+[2K/.htaccess            (Status: 403) [Size: 298]
+[2K/.htaccess.js         (Status: 403) [Size: 301]
+[2K/.htaccess.bak        (Status: 403) [Size: 302]
+[2K/.htpasswd.html       (Status: 403) [Size: 303]
+[2K/.htaccess.php        (Status: 403) [Size: 302]
+[2K/.htpasswd.php        (Status: 403) [Size: 302]
+[2K/.htpasswd            (Status: 403) [Size: 298]
+[2K/.htpasswd.bak        (Status: 403) [Size: 302]
+[2K/.htpasswd.txt        (Status: 403) [Size: 302]
+[2K/.htpasswd.js         (Status: 403) [Size: 301]
+[2K/index.html           (Status: 200) [Size: 11321]
+[2K/index.html           (Status: 200) [Size: 11321]
+[2K/robots.txt           (Status: 200) [Size: 929]
+[2K/robots.txt           (Status: 200) [Size: 929]
+[2K/server-status        (Status: 403) [Size: 302]
+[2K/simple               (Status: 200) [Size: 20073]
+
+===============================================================
+Finished
+===============================================================

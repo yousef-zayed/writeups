@@ -1,0 +1,34 @@
+# Cracking the CMS Made Simple admin password hash pulled from the
+# cms_users table (see mysql_enum.txt) during post-exploitation.
+# This is a SEPARATE credential from the system/SSH password recovered
+# via Hydra above - both turned out to be the same underlying password
+# ("secret"), confirming password reuse across the system and
+# application layers (also called out by the room author in
+# ForMitch.txt).
+# ---------------------------------------------------------------------
+
+Hash (from cms_users.password column, user: mitch):
+0c01f4468bd75d7a84c7eb73846e8d96
+
+Attempt 1 - john the ripper, rockyou.txt:
+$ john --format=raw-md5 --wordlist=rockyou.txt hash.txt
+0g 0:00:00:00 DONE ... 0g/s 25163Kp/s
+Result: 0 hashes cracked
+
+Attempt 2 - hashcat, rockyou.txt:
+$ hashcat -m 0 0c01f4468bd75d7a84c7eb73846e8d96 rockyou.txt
+Recovered........: 0/1 (0.00%) Digests (total)
+Result: not found in rockyou.txt
+
+Attempt 3 - hashes.com precomputed lookup:
+0c01f4468bd75d7a84c7eb73846e8d96:1dac0d92e9fa6bb2secret
+
+Analysis:
+The hash is salted (CMSMS 2.x hashes as MD5(salt + password)), which is
+why a plain md5("secret") = 5ebe2294ecd0e0f08eab7690d2a6ee69 didn't
+match it directly, and why a straight rockyou dictionary attack against
+the raw hash failed - the salt "1dac0d92e9fa6bb2" isn't in the
+wordlist, and neither tool was given the salt separately to combine
+with candidates.
+
+Recovered password: secret
