@@ -1,4 +1,4 @@
-# Simple CTF — TryHackMe
+# [Simple CTF — TryHackMe](https://tryhackme.com/room/easyctf)
 
 **Difficulty:** Easy
 
@@ -201,12 +201,12 @@ hydra -L users.txt -P /usr/share/wordlists/rockyou.txt -t 64 <target> http-post-
 **Result:**
 
 ```
-[80][http-post-form] host: <target>   login: mitch   password: secret
+[80][http-post-form] host: <target>   login: mitch   password: [REDACTED]
 ```
 
 Full command and result in `evidence/hydra_bruteforce.txt`.
 
-This single credential pair (`mitch:secret`) worked for the CMS admin panel. Success!!
+This single credential pair (`mitch:[REDACTED]`) worked for the CMS admin panel. Success!!
 
 ### Alternate path: SQL injection (CVE-2019-9053)
 
@@ -245,7 +245,7 @@ Comparing against the ground-truth values recovered later via direct database ac
 
 | Field | 1st run output | Actual value | Match |
 |---|---|---|---|
-| Salt | `1dac0d923E` | `1dac0d92e9fa6bb2` | Partial |
+| Salt | `1dac0d923E` | `[REDACTED]` | Partial |
 | Username | `mi2` | `mitch` | Partial |
 | Email | `admin@admin.copQ` | `admin@admin.com` | Partial |
 | Password hash | `0c01f4468bu` | `0c01f4468bd75d7a84c7eb73846e8d96` | Partial |
@@ -255,7 +255,7 @@ Each field's leading characters matched the true values before the extraction co
 On a subsequent run, without any code changes, the same script correctly extracted three of the four fields in full:
 
 ```
-[+] Salt for password found: 1dac0d92e9fa6bb2
+[+] Salt for password found: [REDACTED]
 [+] Username found: mitch
 [+] Email found: adminAF
 [+] Password found: 0c01f4468bd75d7a84c7eb73846e8d96@
@@ -263,7 +263,7 @@ On a subsequent run, without any code changes, the same script correctly extract
 
 | Field | 2nd run output | Actual value | Match |
 |---|---|---|---|
-| Salt | `1dac0d92e9fa6bb2` | `1dac0d92e9fa6bb2` | Exact |
+| Salt | `[REDACTED]` | `[REDACTED]` | Exact |
 | Username | `mitch` | `mitch` | Exact |
 | Email | `adminAF` | `admin@admin.com` | Partial |
 | Password hash | `0c01f4468bd75d7a84c7eb73846e8d96` | `0c01f4468bd75d7a84c7eb73846e8d96` | Exact |
@@ -272,7 +272,7 @@ The improvement between runs, with no change to the script itself, supports the 
 
 ### Gaining access
 
-With `mitch:secret` confirmed working, I logged into the CMS admin panel and sifted through the available pages. I found a File Manager module, investigated it for file upload vulnerabilities, but found nothing exploitable. After further investigation turned up nothing else of value, I moved to the third service — and the most interesting one — SSH on port 2222.
+With `mitch:[REDACTED]` confirmed working, I logged into the CMS admin panel and sifted through the available pages. I found a File Manager module, investigated it for file upload vulnerabilities, but found nothing exploitable. After further investigation turned up nothing else of value, I moved to the third service — and the most interesting one — SSH on port 2222.
 
 Since `ForMitch.txt` hinted at reused credentials, I tried the same pair over SSH:
 
@@ -361,10 +361,10 @@ Attempted to crack the extracted hash with both `john` and `hashcat` against `ro
 A lookup against `hashes.com`'s precomputed hash database (rather than a fresh wordlist attack) returned a match:
 
 ```
-0c01f4468bd75d7a84c7eb73846e8d96:1dac0d92e9fa6bb2secret
+0c01f4468bd75d7a84c7eb73846e8d96:[REDACTED]
 ```
 
-Parsing this as `salt + password` gives a password of **`secret`** — the exact same password already recovered via Hydra. This confirms the room's intended finding explicitly: **the same weak password (`secret`) was reused across the system/SSH account and the CMS application account**, exactly as `ForMitch.txt` warned. Full crack attempts and reasoning in `evidence/hash_cracking.txt`.
+Parsing this as `salt + password` gives a password of **`[REDACTED]`** — the exact same password already recovered via Hydra. This confirms the room's intended finding explicitly: **the same weak password was reused across the system/SSH account and the CMS application account**, exactly as `ForMitch.txt` warned. Full crack attempts and reasoning in `evidence/hash_cracking.txt`.
 
 ### Ruled-out vectors
 

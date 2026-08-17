@@ -2,7 +2,7 @@
 # cms_users table (see mysql_enum.txt) during post-exploitation.
 # This is a SEPARATE credential from the system/SSH password recovered
 # via Hydra above - both turned out to be the same underlying password
-# ("secret"), confirming password reuse across the system and
+# confirming password reuse across the system and
 # application layers (also called out by the room author in
 # ForMitch.txt).
 # ---------------------------------------------------------------------
@@ -21,14 +21,14 @@ Recovered........: 0/1 (0.00%) Digests (total)
 Result: not found in rockyou.txt
 
 Attempt 3 - hashes.com precomputed lookup:
-0c01f4468bd75d7a84c7eb73846e8d96:1dac0d92e9fa6bb2secret
+0c01f4468bd75d7a84c7eb73846e8d96:[REDACTED]
 
 Analysis:
 The hash is salted (CMSMS 2.x hashes as MD5(salt + password)), which is
-why a plain md5("secret") = 5ebe2294ecd0e0f08eab7690d2a6ee69 didn't
+why a plain md5 hash for the password didn't
 match it directly, and why a straight rockyou dictionary attack against
-the raw hash failed - the salt "1dac0d92e9fa6bb2" isn't in the
+the raw hash failed - the salt isn't in the
 wordlist, and neither tool was given the salt separately to combine
 with candidates.
 
-Recovered password: secret
+Recovered password: [REDACTED]

