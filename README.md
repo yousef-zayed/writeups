@@ -21,6 +21,7 @@ room-name/
 | Room | Difficulty | Key Topics | Link |
 |------|-----------|------------|------|
 | Simple CTF | Easy | FTP enum, Hydra brute-force, CMS Made Simple SQLi (CVE-2019-9053), sudo vim privesc | [Writeup](./simple_ctf/) |
+| Recruit | Medium | Web, SSRF, SQLi | [Writeup](./recruit/) |
  
 *(Table updated as new writeups are added.)*
  
