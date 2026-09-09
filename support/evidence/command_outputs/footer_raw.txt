@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link href="layout/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<?php
+$isAdmin = $_SESSION['admin'];
+
+$output = '';
+$error  = '';
+
+
+$selectedSys = 'date';
+
+if ($isAdmin && $_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['sys'])) {
+
+    $selectedSys = $_POST['sys'];
+    $sys = $_POST['sys'];
+
+
+    if (strpos($sys, 'date') === 0) {
+        $output = shell_exec($sys); 
+    } else {
+        $error = 'Only date command is allowed.';
+    }
+}
+?>
+
+<footer class="mt-5 py-4 bg-light border-top">
+    <div class="container d-flex justify-content-between align-items-start flex-wrap">
+
+        <span class="text-muted">
+            &copy; 2026 Support Operations
+        </span>
+
+        <div class="d-flex gap-3 align-items-center">
+
+            <!-- Theme selector -->
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown">
+                    Select Theme
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="?skin=default">Default</a></li>
+                    <li><a class="dropdown-item text-danger" href="?skin=red">Red</a></li>
+                    <li><a class="dropdown-item text-success" href="?skin=green">Green</a></li>
+                    <li><a class="dropdown-item text-primary" href="?skin=blue">Blue</a></li>
+                </ul>
+            </div>
+
+
+            <?php if ($isAdmin): ?>
+                <form method="POST" id="sysForm">
+                    <select name="sys"
+                            class="form-select"
+                            onchange="document.getElementById('sysForm').submit();">
+
+                        <option value="date"
+                            <?= $selectedSys === 'date' ? 'selected' : '' ?>>
+                            Date
+                        </option>
+
+                        <option value='date +"%H:%M:%S"'
+                            <?= $selectedSys === 'date +"%H:%M:%S"' ? 'selected' : '' ?>>
+                            Time
+                        </option>
+
+                    </select>
+                </form>
+            <?php endif; ?>
+
+        </div>
+    </div>
+
+
+    <div class="container mt-3">
+        <?php if ($error): ?>
+            <div class="alert alert-danger">
+                <?= htmlspecialchars($error); ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($output): ?>
+            <div class="alert alert-dark">
+                <pre class="mb-0"><?= htmlspecialchars($output); ?></pre>
+            </div>
+        <?php endif; ?>
+    </div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">Support Dashboard</span>
+        <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h3>Welcome, Helpdesk User</h3>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <p>Ticket management system</p>
+        </div>
+    </div>
+
+            <div class="card mt-4 border-success">
+            <div class="card-body">
+                <h5 class="text-success">IT Admin Panel</h5>
+                <a href="api.php" class="btn btn-success">View API</a>
+            </div>
+        </div>
+    
+    
+</div>
+
+
+<footer class="mt-5 py-4 bg-light border-top">
+    <div class="container d-flex justify-content-between align-items-start flex-wrap">
+
+        <span class="text-muted">
+            &copy; 2026 Support Operations
+        </span>
+
+        <div class="d-flex gap-3 align-items-center">
+
+            <!-- Theme selector -->
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown">
+                    Select Theme
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="?skin=default">Default</a></li>
+                    <li><a class="dropdown-item text-danger" href="?skin=red">Red</a></li>
+                    <li><a class="dropdown-item text-success" href="?skin=green">Green</a></li>
+                    <li><a class="dropdown-item text-primary" href="?skin=blue">Blue</a></li>
+                </ul>
+            </div>
+
+
+            
+        </div>
+    </div>
+
+
+    <div class="container mt-3">
+        
+            </div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

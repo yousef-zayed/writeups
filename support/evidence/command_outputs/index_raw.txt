@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link href="layout/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<?php
+session_start();
+include('/var/www/db.php');
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    foreach ($users as $id => $user) {
+        if ($user['email'] === $email && $user['password'] === $password) {
+
+            $_SESSION['loggedin'] = true;
+            $_SESSION['user_id']  = $id;
+			$_SESSION['admin']  = $user['admin'];
+    
+            setcookie(
+                'isITUser',
+                $user['admin'] ? md5("true") : md5("false"),
+                time() + 3600,
+                '/'
+            );
+
+            header('Location: dashboard.php');
+            exit;
+        }
+    }
+
+    $error = 'Invalid credentials';
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Support Operations Panel</title>
+    <link href="layout/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            height: 100vh;
+            color: #e5e7eb;
+        }
+        .brand-panel {
+            padding: 80px;
+        }
+        .brand-panel h1 {
+            font-weight: 700;
+        }
+        .login-panel {
+            background: #f8fafc;
+            color: #0f172a;
+            padding: 50px;
+            height: 100vh;
+        }
+        .login-panel input {
+            border-radius: 0;
+        }
+        .login-panel button {
+            border-radius: 0;
+            background-color: #2563eb;
+        }
+        .security-note {
+            font-size: 0.85rem;
+            color: #475569;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container-fluid h-100">
+    <div class="row h-100">
+
+
+        <div class="col-md-7 brand-panel d-flex flex-column justify-content-center">
+            <h1>Support Operations Panel</h1>
+            <p class="lead mt-3">
+                Internal platform for managing support operations,
+                infrastructure access, and incident response.
+            </p>
+
+            <ul class="mt-4">
+                <li>Ticket management</li>
+                <li>Internal APIs</li>
+                <li>System diagnostics</li>
+            </ul>
+
+            <p class="mt-5 text-warning">
+                ⚠ Authorized personnel only. All actions are logged.
+            </p>
+        </div>
+
+
+        <div class="col-md-5 login-panel d-flex flex-column justify-content-center">
+            <h3 class="mb-4">Employee Authentication</h3>
+
+            <?php if ($error): ?>
+                <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+            <?php endif; ?>
+
+            <form method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Corporate Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="help@support.thm" required>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+
+                <button class="btn btn-primary w-100">Sign In</button>
+            </form>
+
+            <p class="security-note mt-4">
+                Problems signing in? Contact IT Operations @ help@support.thm
+            </p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand">Support Dashboard</span>
+        <a href="logout.php" class="btn btn-sm btn-danger">Logout</a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h3>Welcome, Helpdesk User</h3>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <p>Ticket management system</p>
+        </div>
+    </div>
+
+            <div class="card mt-4 border-success">
+            <div class="card-body">
+                <h5 class="text-success">IT Admin Panel</h5>
+                <a href="api.php" class="btn btn-success">View API</a>
+            </div>
+        </div>
+    
+    
+</div>
+
+
+<footer class="mt-5 py-4 bg-light border-top">
+    <div class="container d-flex justify-content-between align-items-start flex-wrap">
+
+        <span class="text-muted">
+            &copy; 2026 Support Operations
+        </span>
+
+        <div class="d-flex gap-3 align-items-center">
+
+            <!-- Theme selector -->
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle"
+                        type="button"
+                        data-bs-toggle="dropdown">
+                    Select Theme
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="?skin=default">Default</a></li>
+                    <li><a class="dropdown-item text-danger" href="?skin=red">Red</a></li>
+                    <li><a class="dropdown-item text-success" href="?skin=green">Green</a></li>
+                    <li><a class="dropdown-item text-primary" href="?skin=blue">Blue</a></li>
+                </ul>
+            </div>
+
+
+            
+        </div>
+    </div>
+
+
+    <div class="container mt-3">
+        
+            </div>
+</footer>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
