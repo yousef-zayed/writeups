@@ -12,8 +12,10 @@ Each room has its own directory containing a `README.md` writeup and an `evidenc
  
 ```
 room-name/
-├── README.md       # full writeup: recon, exploitation, privesc, lessons learned
-└── evidence/        # numbered screenshots in capture order
+├── README.md       # Full writeup
+└── evidence/       # All command outputs and screenshots used throughout the CTF
+    ├── command_outputs/
+    └── screenshots/
 ```
  
 ## Writeups
@@ -22,6 +24,7 @@ room-name/
 |------|-----------|------------|------|
 | Simple CTF | Easy | FTP enum, Hydra brute-force, CMS Made Simple SQLi (CVE-2019-9053), sudo vim privesc | [Writeup](./simple_ctf/) |
 | Recruit | Medium | Web, SSRF, SQLi | [Writeup](./recruit/) |
+| Support | Medium | Web exploitation, LFI/file disclosure, authentication, brute-force, RCE| [Writeup](./support/) |
  
 *(Table updated as new writeups are added.)*
  
