@@ -23,6 +23,7 @@ room-name/
 | Recruit | Medium | Web, SSRF, SQLi | [Writeup](./recruit/) |
 | Support | Medium | Web exploitation, LFI/file disclosure, authentication, brute-force, RCE| [Writeup](./support/) |
 | Mr Robot | Medium | Web exploitation, RCE, Linux, Privilege Escalation | [Writeup](./mrrobot/) |
+| Jump | Easy | Linux, Privilege Escalation | [Writeup](./jump/) |
  
 *(Table updated as new writeups are added.)*
  

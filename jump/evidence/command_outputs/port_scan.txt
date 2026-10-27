@@ -1,0 +1,32 @@
+# Nmap 7.98 scan initiated Wed Oct 21 19:18:33 2026 as: nmap -sS -sV -sC -T5 -p- -v -o port_scan.txt 10.80.177.253
+Warning: 10.80.177.253 giving up on port because retransmission cap hit (2).
+Nmap scan report for 10.80.177.253
+Host is up (0.14s latency).
+Not shown: 64834 closed tcp ports (reset), 699 filtered tcp ports (no-response)
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.5
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+| drwxrwxrwx    2 115      123          4096 Apr 30 06:00 incoming [NSE: writeable]
+|_drwxr-xr-x    4 115      123          4096 Jun 09 08:22 pub
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:192.168.192.25
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 3
+|      vsFTPd 3.0.5 - secure, fast, stable
+|_End of status
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.16 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 b6:e1:15:69:f8:78:92:ae:99:ff:7c:15:f7:76:85:7c (ECDSA)
+|_  256 92:a4:ce:c7:1a:eb:dc:75:04:8b:29:11:76:b0:e2:2a (ED25519)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Wed Oct 21 19:28:44 2026 -- 1 IP address (1 host up) scanned in 610.98 seconds
