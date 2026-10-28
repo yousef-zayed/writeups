@@ -1,0 +1,56 @@
+# Nmap 7.98 scan initiated Fri Oct 23 14:03:37 2026 as: nmap -v -sS -sV -sC -p- -T5 -o port_scan.txt 10.82.191.109
+Increasing send delay for 10.82.191.109 from 0 to 5 due to 225 out of 562 dropped probes since last increase.
+Nmap scan report for 10.82.191.109
+Host is up (0.11s latency).
+Not shown: 65521 closed tcp ports (reset)
+PORT      STATE SERVICE       VERSION
+135/tcp   open  msrpc         Microsoft Windows RPC
+139/tcp   open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp   open  microsoft-ds?
+3389/tcp  open  ms-wbt-server Microsoft Terminal Services
+| ssl-cert: Subject: commonName=privesc
+| Issuer: commonName=privesc
+| Public Key type: rsa
+| Public Key bits: 2048
+| Signature Algorithm: sha256WithRSAEncryption
+| Not valid before: 2026-10-22T11:02:32
+| Not valid after:  2027-04-23T11:02:32
+| MD5:     9ba4 7b7e 0ba2 9881 35b8 6301 85ed aea6
+| SHA-1:   888f 7a17 3164 589c ea62 7a7b a9fc 0139 0c2c 800a
+|_SHA-256: dea1 165f 6f5e 3f3e 82aa a9d3 e6ae e8a5 3e7d e6b8 4298 0a28 9c48 5723 3881 7155
+| rdp-ntlm-info: 
+|   Target_Name: PRIVESC
+|   NetBIOS_Domain_Name: PRIVESC
+|   NetBIOS_Computer_Name: PRIVESC
+|   DNS_Domain_Name: privesc
+|   DNS_Computer_Name: privesc
+|   Product_Version: 10.0.17763
+|_  System_Time: 2026-10-23T11:10:22+00:00
+|_ssl-date: 2026-10-23T11:10:30+00:00; 0s from scanner time.
+5985/tcp  open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+47001/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-title: Not Found
+|_http-server-header: Microsoft-HTTPAPI/2.0
+49664/tcp open  msrpc         Microsoft Windows RPC
+49665/tcp open  msrpc         Microsoft Windows RPC
+49666/tcp open  msrpc         Microsoft Windows RPC
+49667/tcp open  msrpc         Microsoft Windows RPC
+49668/tcp open  msrpc         Microsoft Windows RPC
+49670/tcp open  msrpc         Microsoft Windows RPC
+49672/tcp open  msrpc         Microsoft Windows RPC
+49678/tcp open  msrpc         Microsoft Windows RPC
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+| smb2-security-mode: 
+|   3.1.1: 
+|_    Message signing enabled but not required
+| smb2-time: 
+|   date: 2026-10-23T11:10:25
+|_  start_date: N/A
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Oct 23 14:10:31 2026 -- 1 IP address (1 host up) scanned in 413.93 seconds

@@ -1,0 +1,9 @@
+Password for [WORKGROUP\yousefmzayed]:
+
+	Sharename       Type      Comment
+	---------       ----      -------
+	ADMIN$          Disk      Remote Admin
+	C$              Disk      Default share
+	IPC$            IPC       Remote IPC
+	Public          Disk      Public file share
+SMB1 disabled -- no workgroup available
