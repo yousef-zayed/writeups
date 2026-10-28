@@ -24,7 +24,7 @@ room-name/
 | Support | Medium | Web exploitation, LFI/file disclosure, authentication, brute-force, RCE| [Writeup](./support/) |
 | Mr Robot | Medium | Web exploitation, RCE, Linux, Privilege Escalation | [Writeup](./mrrobot/) |
 | Jump | Easy | Linux, Privilege Escalation | [Writeup](./jump/) |
-| Windows Jump | Medium | Windows, Privilege Escalation | [Writeup](./windwos_jump/) | 
+| Windows Jump | Medium | Windows, Privilege Escalation | [Writeup](./windows_jump/) | 
  
 *(Table updated as new writeups are added.)*
  
